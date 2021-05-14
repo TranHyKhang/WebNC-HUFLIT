@@ -1,0 +1,36 @@
+﻿@model IEnumerable<TH05.Models.Product>
+
+@{
+    ViewBag.Title = "SearchOption";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("SearchOption", "Product"))
+{
+    <span>from</span><input type="number" name="min" />
+    <span>from</span><input type="number" name="max" />
+    <input type="submit" value="Search" />
+    <div>
+        <div>
+            @foreach(var pro in Model)
+            {
+                <div class="container">
+                    <div class="row">
+                        <p>
+                            @Html.DisplayFor(model => pro.ProductID)
+                        </p>
+                        <img src="@Url.Content(pro.ImagePro)" height="150" width="150" />
+                        <p>
+                            @Html.DisplayFor(model => pro.NamePro)
+                        </p>
+                        <p>
+                            @Html.DisplayFor(model => pro.Price)
+                        </p>
+                        <a href="/ShoppingCart/AddToCart/@pro.ProductID" class="btn btn-default">Buy</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+

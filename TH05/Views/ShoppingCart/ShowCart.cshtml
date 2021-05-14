@@ -1,0 +1,96 @@
+﻿@model TH05.Models.Cart
+
+@{
+    ViewBag.Title = "ShowCart";
+}
+
+<h2>ShowCart</h2>
+<a href="/Products">Tiếp tục mua hàng</a>
+@if(Model != null)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Tên sản phẩm</th>
+                <th>Hình sản phẩm</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model.Items)
+            {
+                decimal total = item._quantity * (decimal)item._product.Price.Value;
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item._product.NamePro)
+                    </td>
+                    <td>
+                        <img src="@Url.Content(item._product.ImagePro)" height="50" width="50" alt="Alternate Text" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item._product.Price)
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("Update_Cart_Quantity", "ShoppingCart"))
+                        {
+                            <input type="hidden" value="@item._product.ProductID" name="idPro" />
+                            <input type="number" value="@item._quantity" name="cartQuantity" />
+                            <input type="submit"  value="Update"  />
+                        }
+                    </td>
+                    <td>@total</td>
+                    <td>
+                        <a href="/ShoppingCart/RemoveCart/@item._product.ProductID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="6" style="text-align: center">
+                    Tổng tiền: @Model.Total_money()
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="4">
+                    @using (Html.BeginForm("CheckOut", "ShoppingCart"))
+                    {
+                    <table>
+                        <tr>
+                            <td>
+                                Code Customer:
+                            </td>
+                            <td>
+                                <input type="number" name="CodeCustomer" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Address Delivery:
+                            </td>
+                            <td>
+                                <input type="text" name="AddressDelivery" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <input type="submit" name="CheckOut" class="btn btn-success"  />
+                                <a href="@Url.Action("Create", "Customers")" class="btn btn-success">Register</a>
+                            </td>
+                        </tr>
+                    </table>
+                    }
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+}
+
+

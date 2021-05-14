@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    
+
+    <style>
+        #div-footer {
+            position: fixed;
+            text-align: center;
+            bottom: 0;
+            left: 0;
+
+            padding-top: 15px;
+            height: 50px;
+            width: 100%;
+            background-color: aquamarine
+        }
+
+        .formart-hello {
+            padding: 15px;
+            color: white
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.Action("BagCart", "ShoppingCart")</li>
+                    <li>
+                        <a href="/LoginUser/RegisterUser">Sign Up</a>
+                    </li>
+                    <li>
+                        <a href="/LoginUser/Index">Login</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("LogOutUser", "LoginUser")">LogOut</a>
+                    </li>
+                    <li class="formart-hello">
+                        @if(Session["Nameuser"] == null)
+                        {
+                            <span>Hello</span>
+                        }
+                        else
+                        {
+                            <span>
+                                @Session["NameUser"]
+                            </span>
+                        }
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid body-content">
+        <div class="row">
+            <div class="col-md-2">
+                <ul>
+                    <li>
+                        <a href="/OderDetail/GroupByTop5" style="color: white" id="animation-top5">Top 5 sp ban chay nhat</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="/Product/SearchOption" class="btn btn-default">Search theo gia</a>
+                    </li>
+                </ul>
+                @{
+                    Html.RenderAction("CategoryPartial", "Categories");
+                }
+            </div>
+            <div class="col-md-10" id="div-content">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <div id="div-footer"x>
+        <p>Hahahaha</p>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

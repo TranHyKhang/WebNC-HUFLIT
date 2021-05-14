@@ -1,0 +1,39 @@
+﻿@model TH05.Models.AdminUser
+@{
+    ViewBag.Title = "RegisterUser";
+}
+
+@using (Html.BeginForm("RegisterUser", "LoginUser", FormMethod.Post, new { enctype = "multipart/from-data"}))
+{
+    @Html.AntiForgeryToken()
+    <p>@Html.LabelFor(model => model.ID)</p>
+    <p>@Html.TextBoxFor(model => model.ID)</p>
+    <p>@Html.ValidationMessageFor(model => model.ID)</p>
+
+    if (ViewBag.RegisterError != null)
+    {
+        <p>@ViewBag.RegisterError</p>
+    }
+
+    <p>@Html.LabelFor(model => model.NameUser)</p>
+    <p>@Html.TextBoxFor(model => model.NameUser)</p>
+    <p>@Html.ValidationMessageFor(model => model.NameUser)</p>
+
+    <p>@Html.LabelFor(model => model.RoleUser)</p>
+    <p>@Html.TextBoxFor(model => model.RoleUser)</p>
+    <p>@Html.ValidationMessageFor(model => model.RoleUser)</p>
+
+    <p>@Html.LabelFor(model => model.PasswordUser)</p>
+    <p>@Html.TextBoxFor(model => model.PasswordUser)</p>
+    <p>@Html.ValidationMessageFor(model => model.PasswordUser)</p>
+
+    <p>@Html.LabelFor(model => model.ConfirmPassword)</p>
+    <p>@Html.TextBoxFor(model => model.ConfirmPassword)</p>
+    <p>@Html.ValidationMessageFor(model => model.ConfirmPassword)</p>
+
+    <input type="submit" value="Register" />
+}
+
+
+
+
