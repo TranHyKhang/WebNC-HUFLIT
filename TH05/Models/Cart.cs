@@ -49,7 +49,14 @@ namespace TH05.Models
             var item = items.Find(s => s._product.ProductID == id);
             if (item != null)
             {
-                item._quantity = _new_quan;
+                if(items.Find(s => s._product.Quantity > _new_quan) != null)
+                {
+                    item._quantity = _new_quan;
+                }
+                else
+                {
+                    item._quantity = 1;
+                }
             }
         }
 

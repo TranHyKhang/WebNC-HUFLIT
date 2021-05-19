@@ -31,7 +31,5 @@ namespace TH05.Models
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<OrderPro> OrderProes { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-
-        public System.Data.Entity.DbSet<TH05.Models.Cart> Carts { get; set; }
     }
 }
