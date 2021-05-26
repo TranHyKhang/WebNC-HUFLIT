@@ -55,6 +55,7 @@
     <Property Name="Category" Type="nchar" MaxLength="20" />
     <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
     <Property Name="ImagePro" Type="nvarchar(max)" />
+    <Property Name="Quantity" Type="int" />
   </EntityType>
   <Association Name="FK__OrderDeta__IDOrd__30F848ED">
     <End Role="OrderPro" Type="Self.OrderPro" Multiplicity="0..1" />

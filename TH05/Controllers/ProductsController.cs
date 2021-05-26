@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TH05.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace TH05.Controllers
 {
@@ -12,11 +14,14 @@ namespace TH05.Controllers
         TH05Entities databse = new TH05Entities();
 
         // GET: Categories
-        public ActionResult Index(string searchValue)
+        public ActionResult Index(string searchValue, int? page)
         {
+            int pageSize = 4;
+            int pageNum = (page ?? 1);
             if (searchValue == null)
             {
-                return View(databse.Products.OrderByDescending(x => x.NamePro));
+                var productList = databse.Products.OrderByDescending(x => x.NamePro);
+                return View(productList.ToPagedList(pageNum, pageSize));
             }
             else
             {

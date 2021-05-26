@@ -54,6 +54,7 @@
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="TH05Model.Product">
         <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />
           <ScalarProperty Name="NamePro" ColumnName="NamePro" />
           <ScalarProperty Name="DecriptionPro" ColumnName="DecriptionPro" />

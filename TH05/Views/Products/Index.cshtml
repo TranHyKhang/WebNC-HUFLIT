@@ -1,4 +1,9 @@
-﻿@model IEnumerable<TH05.Models.Product>
+﻿@using TH05.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Product>
+
+@*@model IEnumerable<TH05.Models.Product>*@
+
 
 @{
     ViewBag.Title = "Index";
@@ -10,26 +15,7 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NamePro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DecriptionPro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImagePro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category1.NameCate)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
+@foreach (var item in (IEnumerable<Product>)Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.NamePro)
@@ -56,5 +42,9 @@
         </td>
     </tr>
 }
-
 </table>
+Trang @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Index",new { page = page}))
+</div>

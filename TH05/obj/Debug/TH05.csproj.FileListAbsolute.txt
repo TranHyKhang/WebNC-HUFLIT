@@ -158,3 +158,7 @@ D:\webnc\WebNC-HUFLIT\TH05\obj\Debug\TH05.csproj.CoreCompileInputs.cache
 D:\webnc\WebNC-HUFLIT\TH05\obj\Debug\TH05.csproj.CopyComplete
 D:\webnc\WebNC-HUFLIT\TH05\obj\Debug\TH05.dll
 D:\webnc\WebNC-HUFLIT\TH05\obj\Debug\TH05.pdb
+D:\webnc\WebNC-HUFLIT\TH05\bin\PagedList.dll
+D:\webnc\WebNC-HUFLIT\TH05\bin\PagedList.Mvc.dll
+D:\webnc\WebNC-HUFLIT\TH05\bin\PagedList.xml
+D:\webnc\WebNC-HUFLIT\TH05\bin\PagedList.Mvc.xml
